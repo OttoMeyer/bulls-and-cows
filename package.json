@@ -1,6 +1,7 @@
 {
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@typescript-eslint/eslint-plugin": "^8.72.1",
     "eslint": "^10.14.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.7",
@@ -8,5 +9,13 @@
     "prettier": "^3.9.10",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.72.1"
+  },
+  "scripts": {
+    "build": "tsc --build",
+    "clean": "tsc --build --clean",
+    "eslint": "eslint",
+    "eslint:fix": "eslint --fix",
+    "prettier": "prettier . --check",
+    "prettier:write": "prettier . --write"
   }
 }
