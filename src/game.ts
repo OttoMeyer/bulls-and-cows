@@ -54,7 +54,13 @@ function isValidGuess(
 }
 
 function createDigitValidator(base: number) {
-  return notImplemented();
+  // prettier-ignore
+  const symbols = [ "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F" ].slice(0, base);
+  return function (value: string) {
+    if (symbols.find((currentValue) => currentValue === value.toUpperCase()))
+      return true;
+    return false;
+  };
 }
 
 function countPossibleSecrets(length: number, base: number): number | void {
