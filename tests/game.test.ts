@@ -1,5 +1,7 @@
 import {
   generateSecret,
+  getSymbols,
+  getRandomSymbol,
   evaluateGuess,
   isValidGuess,
   createDigitValidator,
@@ -7,6 +9,14 @@ import {
 } from "../src/game";
 
 describe("generateSecret", () => {
+  test.todo("Implement tests");
+});
+
+describe("getSymbols", () => {
+  test.todo("Implement tests");
+});
+
+describe("getRandomSymbol", () => {
   test.todo("Implement tests");
 });
 

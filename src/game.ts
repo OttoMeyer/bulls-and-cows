@@ -6,16 +6,27 @@ function generateSecret(
   length: number,
   base: number,
   random = Math.random,
-): Array<number> | void {
+): Array<string> | void {
   return notImplemented();
 }
 
-function evaluateGuess(secret: Array<number>, guess: Array<number>) {
+function getSymbols(base: number): Array<string> | void {
+  return notImplemented();
+}
+
+function getRandomSymbol(
+  symbols: Array<string>,
+  random: number,
+): string | void {
+  return notImplemented();
+}
+
+function evaluateGuess(secret: Array<string>, guess: Array<string>) {
   return notImplemented();
 }
 
 function isValidGuess(
-  guess: Array<number>,
+  guess: Array<string>,
   length: number,
   base: number,
 ): boolean | void {
@@ -32,6 +43,8 @@ function countPossibleSecrets(length: number, base: number): number | void {
 
 module.exports = {
   generateSecret,
+  getSymbols,
+  getRandomSymbol,
   evaluateGuess,
   isValidGuess,
   createDigitValidator,
