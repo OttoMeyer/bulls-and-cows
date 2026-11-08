@@ -87,7 +87,26 @@ describe("evaluateGuess", () => {
 });
 
 describe("isValidGuess", () => {
-  test.todo("Implement tests");
+  test("true on valid guess", () => {
+    expect(isValidGuess(["1", "2", "F"], 3, 16)).toBe(true);
+    expect(isValidGuess(["1", "0", "3", "4", "5"], 5, 10)).toBe(true);
+  });
+  test("true on upper and lower case", () => {
+    expect(isValidGuess(["c", "f", "A"], 3, 16)).toBe(true);
+    expect(isValidGuess(["C", "F", "a"], 3, 16)).toBe(true);
+  });
+  test("false on invalid length", () => {
+    expect(isValidGuess(["1", "2", "F"], 2, 16)).toBe(true);
+    expect(isValidGuess(["1", "0", "3", "4", "5"], 7, 10)).toBe(true);
+  });
+  test("false on invalid symbol", () => {
+    expect(isValidGuess(["1", "2", "j"], 3, 16)).toBe(true);
+    expect(isValidGuess(["1", "0", "3", "A", "5"], 5, 10)).toBe(true);
+  });
+  test("false on repeating symbol", () => {
+    expect(isValidGuess(["1", "f", "F"], 3, 16)).toBe(true);
+    expect(isValidGuess(["1", "0", "3", "4", "3"], 5, 10)).toBe(true);
+  });
 });
 
 describe("createDigitValidator", () => {
