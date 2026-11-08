@@ -8,37 +8,36 @@ import {
 
 describe("generateSecret", () => {
   test("Generate secret base 16", () => {
-    expect(generateSecret(5, 16, 0.123456)).toEqual(["1", "E", "2", "4", "0"]);
+    expect(generateSecret(5, 16, 0.123456)).toEqual(["E", "2", "4", "0", "1"]);
   });
   test("Adds 0 at the end if there are not enough simbolos", () => {
     expect(generateSecret(7, 16, 0.123456)).toEqual([
-      "1",
       "E",
       "2",
       "4",
       "0",
       "0",
       "0",
+      "1",
     ]);
   });
   test("Cut simbolos at the end if there are too many simbolos", () => {
-    expect(generateSecret(3, 16, 0.123456)).toEqual(["1", "E", "2"]);
+    expect(generateSecret(3, 16, 0.123456)).toEqual(["E", "2", "1"]);
   });
   test("Generate secret base 2", () => {
     expect(generateSecret(8, 2, 0.123456)).toEqual([
+      "1",
+      "1",
+      "1",
       "0",
       "0",
       "0",
       "1",
       "1",
-      "1",
-      "1",
-      "0",
     ]);
   });
   test("Generate secret base 8", () => {
     expect(generateSecret(8, 8, 0.123456)).toEqual([
-      "3",
       "6",
       "1",
       "1",
@@ -46,10 +45,11 @@ describe("generateSecret", () => {
       "0",
       "0",
       "0",
+      "3",
     ]);
   });
   test("Generate secret base 10", () => {
-    expect(generateSecret(4, 10, 0.123456)).toEqual(["1", "2", "3", "4"]);
+    expect(generateSecret(4, 10, 0.123456)).toEqual(["2", "3", "4", "1"]);
   });
   test("Does not allow length <= 0", () => {
     expect(() => generateSecret(0, 10, 0.123456)).toThrow(RangeError);
