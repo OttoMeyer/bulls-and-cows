@@ -60,7 +60,30 @@ describe("generateSecret", () => {
 });
 
 describe("evaluateGuess", () => {
-  test.todo("Implement tests");
+  test("All bulls", () => {
+    expect(evaluateGuess(["1", "2", "F"], ["1", "2", "F"])).toEqual({
+      bulls: 3,
+      cows: 0,
+    });
+  });
+  test("All cows", () => {
+    expect(evaluateGuess(["1", "2", "F"], ["2", "F", "1"])).toEqual({
+      bulls: 0,
+      cows: 3,
+    });
+  });
+  test("All wrong", () => {
+    expect(evaluateGuess(["1", "2", "F"], ["0", "E", "5"])).toEqual({
+      bulls: 0,
+      cows: 0,
+    });
+  });
+  test("All wrong", () => {
+    expect(evaluateGuess(["1", "2", "F"], ["1", "F", "5"])).toEqual({
+      bulls: 1,
+      cows: 1,
+    });
+  });
 });
 
 describe("isValidGuess", () => {
