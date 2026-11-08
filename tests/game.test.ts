@@ -91,7 +91,24 @@ describe("isValidGuess", () => {
 });
 
 describe("createDigitValidator", () => {
-  test.todo("Implement tests");
+  test("true on valid symbol", () => {
+    expect(createDigitValidator(10)("4")).toBe(true);
+    expect(createDigitValidator(4)("2")).toBe(true);
+    expect(createDigitValidator(16)("a")).toBe(true);
+    expect(createDigitValidator(2)("0")).toBe(true);
+  });
+  test("false on invalid symbol", () => {
+    expect(createDigitValidator(10)("b")).toBe(false);
+    expect(createDigitValidator(4)("7")).toBe(false);
+    expect(createDigitValidator(16)("j")).toBe(false);
+    expect(createDigitValidator(2)("2")).toBe(false);
+  });
+  test("true on upper and lower case", () => {
+    expect(createDigitValidator(16)("a")).toBe(true);
+    expect(createDigitValidator(16)("A")).toBe(true);
+    expect(createDigitValidator(16)("f")).toBe(true);
+    expect(createDigitValidator(16)("F")).toBe(true);
+  });
 });
 
 describe("countPossibleSecrets", () => {
