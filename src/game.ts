@@ -11,7 +11,27 @@ function generateSecret(
 }
 
 function getSymbols(base: number): Array<string> | void {
-  return notImplemented();
+  if (base <= 0) return [];
+  if (base > 16) return [];
+  const allSymbols = [
+    "0",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f",
+  ];
+  return allSymbols.slice(0, base);
 }
 
 function getRandomSymbol(
