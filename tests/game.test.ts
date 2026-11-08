@@ -78,7 +78,7 @@ describe("evaluateGuess", () => {
       cows: 0,
     });
   });
-  test("All wrong", () => {
+  test("Bulls, cows and wrong", () => {
     expect(evaluateGuess(["1", "2", "F"], ["1", "F", "5"])).toEqual({
       bulls: 1,
       cows: 1,
