@@ -14,10 +14,10 @@ describe("generateSecret", () => {
 
 describe("getSymbols", () => {
   test("Get base 4 symbols", () => {
-    expect(getSymbols(4)).toBe(["0", "1", "2", "3"]);
+    expect(getSymbols(4)).toEqual(["0", "1", "2", "3"]);
   });
   test("Get base 16 symbols", () => {
-    expect(getSymbols(16)).toBe([
+    expect(getSymbols(16)).toEqual([
       "0",
       "1",
       "2",
@@ -37,14 +37,14 @@ describe("getSymbols", () => {
     ]);
   });
   test("Get [] if base is <=0 number", () => {
-    expect(getSymbols(0)).toBe([]);
-    expect(getSymbols(-1)).toBe([]);
-    expect(getSymbols(-992)).toBe([]);
+    expect(getSymbols(0)).toEqual([]);
+    expect(getSymbols(-1)).toEqual([]);
+    expect(getSymbols(-992)).toEqual([]);
   });
   test("Get [] if base is a more than 16", () => {
-    expect(getSymbols(17)).toBe([]);
-    expect(getSymbols(45)).toBe([]);
-    expect(getSymbols(999)).toBe([]);
+    expect(getSymbols(17)).toEqual([]);
+    expect(getSymbols(45)).toEqual([]);
+    expect(getSymbols(999)).toEqual([]);
   });
 });
 
