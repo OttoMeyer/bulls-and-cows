@@ -7,7 +7,13 @@ function generateSecret(
   base: number,
   random = Math.random,
 ): Array<string> | void {
-  return notImplemented();
+  if (length <= 0) throw new RangeError("The length must be greater than zero");
+  if (base <= 0 || base > 16) throw new RangeError("Base can be only 1-16");
+  let secretNumber: number = parseInt(random.toString().slice(2));
+  let secret: string = secretNumber.toString(base).toUpperCase();
+  if (secret.length < length) secret = secret.padEnd(length, "0");
+  else if (secret.length > length) secret = secret.slice(0, length);
+  return (secret + secret[0]).slice(1).split("");
 }
 
 function evaluateGuess(secret: Array<string>, guess: Array<string>) {
