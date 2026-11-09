@@ -50,7 +50,18 @@ function isValidGuess(
   length: number,
   base: number,
 ): boolean | void {
-  return notImplemented();
+  if (!(guess.length === length)) return false;
+  if (!guess.every(createDigitValidator(base))) return false;
+  return !guess
+    .map((value) => value.toUpperCase())
+    .some(function (currentValue, index, array) {
+      return array
+        .slice(index)
+        .find(
+          (value, index) =>
+            value.toUpperCase() === currentValue.toUpperCase() && index != 0,
+        );
+    });
 }
 
 function createDigitValidator(base: number) {
