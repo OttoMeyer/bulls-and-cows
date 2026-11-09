@@ -74,8 +74,10 @@ function createDigitValidator(base: number) {
   };
 }
 
-function countPossibleSecrets(length: number, base: number): number | void {
-  return notImplemented();
+function countPossibleSecrets(length: number, base: number): number {
+  if (base <= 0) return 1;
+  if (length <= 0) return 1;
+  return base * countPossibleSecrets(length - 1, base - 1);
 }
 
 module.exports = {
