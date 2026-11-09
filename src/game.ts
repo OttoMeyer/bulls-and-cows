@@ -2,36 +2,36 @@ function notImplemented() {
   throw new Error("The method is not implemented.");
 }
 
-type GuessAccuracy = {
+export type GuessAccuracy = {
   bulls: number;
   cows: number;
 };
 
-function generateSecret(
+export function generateSecret(
   length: number,
   base: number,
-  random = Math.random,
-): Array<string> | void {
+  random: number = Math.random(),
+): Array<string> {
   if (length <= 0) throw new RangeError("The length must be greater than zero");
   if (base <= 0 || base > 16) throw new RangeError("Base can be only 1-16");
   // prettier-ignore
   const symbols = [ "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F" ].slice(0, base);
-  symbols.map(function (currentValue, currentIndex) {
+  symbols.map(function (this: string[], currentValue, currentIndex) {
     if (currentIndex >= this.length - 1) return currentValue;
     if (Math.floor(random * Math.pow(10, currentIndex + 1)) % 10 >= 5) {
       // prettier-ignore
       [this[currentIndex], this[currentIndex + 1]] = 
-      [this[currentIndex + 1], this[currentIndex]];
+      [this[currentIndex + 1]!, this[currentIndex]!];
     }
     return this[currentIndex];
   }, symbols);
   return symbols.slice(0, length);
 }
 
-function evaluateGuess(
+export function evaluateGuess(
   secret: Array<string>,
   guess: Array<string>,
-): GuessAccuracy | void {
+): GuessAccuracy {
   let bulls = secret.reduce(function (total, currentValue, currentIndex) {
     if (currentValue === guess[currentIndex]) return total + 1;
     return total;
@@ -45,11 +45,11 @@ function evaluateGuess(
   return { bulls: bulls, cows: cows };
 }
 
-function isValidGuess(
+export function isValidGuess(
   guess: Array<string>,
   length: number,
   base: number,
-): boolean | void {
+): boolean {
   if (!(guess.length === length)) return false;
   if (!guess.every(createDigitValidator(base))) return false;
   return !guess
@@ -64,7 +64,7 @@ function isValidGuess(
     });
 }
 
-function createDigitValidator(base: number) {
+export function createDigitValidator(base: number) {
   // prettier-ignore
   const symbols = [ "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F" ].slice(0, base);
   return function (value: string) {
@@ -74,16 +74,8 @@ function createDigitValidator(base: number) {
   };
 }
 
-function countPossibleSecrets(length: number, base: number): number {
+export function countPossibleSecrets(length: number, base: number): number {
   if (base <= 0) return 1;
   if (length <= 0) return 1;
   return base * countPossibleSecrets(length - 1, base - 1);
 }
-
-module.exports = {
-  generateSecret,
-  evaluateGuess,
-  isValidGuess,
-  createDigitValidator,
-  countPossibleSecrets,
-};

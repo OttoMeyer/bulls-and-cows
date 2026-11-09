@@ -1,1 +1,1 @@
-{"root":["./src/script.ts"],"version":"6.0.3"}
+{"root":["./src/game.ts","./src/script.ts"],"version":"6.0.3"}
