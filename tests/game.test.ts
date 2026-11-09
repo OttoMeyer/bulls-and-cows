@@ -131,5 +131,11 @@ describe("createDigitValidator", () => {
 });
 
 describe("countPossibleSecrets", () => {
-  test.todo("Implement tests");
+  test("true on valid symbol", () => {
+    expect(countPossibleSecrets(4, 10)).toBe(5040);
+    expect(countPossibleSecrets(10, 10)).toBe(3628800);
+    expect(countPossibleSecrets(2, 7)).toBe(42);
+    expect(countPossibleSecrets(2, 2)).toBe(2);
+    expect(countPossibleSecrets(3, 16)).toBe(3360);
+  });
 });
