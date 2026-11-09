@@ -131,11 +131,18 @@ describe("createDigitValidator", () => {
 });
 
 describe("countPossibleSecrets", () => {
-  test("true on valid symbol", () => {
+  test("Checking for correct calculation", () => {
     expect(countPossibleSecrets(4, 10)).toBe(5040);
     expect(countPossibleSecrets(10, 10)).toBe(3628800);
     expect(countPossibleSecrets(2, 7)).toBe(42);
     expect(countPossibleSecrets(2, 2)).toBe(2);
     expect(countPossibleSecrets(3, 16)).toBe(3360);
+  });
+  test("Checking for calculations with 0 or negative numbers", () => {
+    expect(countPossibleSecrets(-1, 10)).toBe(1);
+    expect(countPossibleSecrets(0, 10)).toBe(1);
+    expect(countPossibleSecrets(3, 0)).toBe(1);
+    expect(countPossibleSecrets(7, -10)).toBe(1);
+    expect(countPossibleSecrets(-1, -5)).toBe(1);
   });
 });
